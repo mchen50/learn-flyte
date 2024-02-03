@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "learn-flyte"
+version = "0.1.0"
+description = "Learn Flyte"
+authors = ["Ming Chen <ming.chen.adam@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+flytekit = "1.10.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
