@@ -5,7 +5,9 @@ from flytekit import task, workflow
 
 @task
 def say_hello(name: str) -> str:
-    return f"Hello, {name}!"
+    hello_msg = f"Hello, {name}!"
+    print(hello_msg)
+    return hello_msg
 
 
 @workflow
