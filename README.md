@@ -50,3 +50,40 @@ At ./learn-flyte/workflows:
 ```bash
 pyflyte run standard_scale_launchplan.py workflow_with_launchplan --num_samples 10 --seed 3
 ```
+
+## Local Cluster
+
+Works only on Linux:
+
+```bash
+curl -sL https://ctl.flyte.org/install | sudo bash -s -- -b /usr/local/bin
+export FLYTECTL_CONFIG=~/.flyte/config-sandbox.yaml
+flytectl demo start
+flytectl create project \
+      --id "my-project" \
+      --labels "my-label=my-project" \
+      --description "My Flyte project" \
+      --name "My project"
+
+pyflyte run --remote -p my-project -d development example.py wf --name Ada
+```
+
+### Register workflows
+
+For single workflow, local testing:
+
+```bash
+pyflyte register workflows
+```
+
+Production setting:
+
+```bash
+pyflyte --pkgs workflows package
+
+flytectl register files \
+    --project my-project \
+    --domain development \
+    --archive flyte-package.tgz \
+    --version "$(git rev-parse HEAD)"
+```
