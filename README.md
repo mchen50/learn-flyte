@@ -87,3 +87,15 @@ flytectl register files \
     --archive flyte-package.tgz \
     --version "$(git rev-parse HEAD)"
 ```
+
+## Map Tasks
+
+```bash
+pyflyte run map_tasks.py parallelized_compute_mean --num_samples 1000 --n_partitions 10
+```
+
+or 
+
+```bash
+pyflyte run --remote map_tasks.py parallelized_compute_mean --num_samples 1000 --n_partitions 10
+```
